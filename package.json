@@ -12,6 +12,7 @@
     "@vueuse/router": "^7.1.2",
     "ant-design-vue": "^3.0.0-alpha.13",
     "nprogress": "^0.2.0",
+    "uuid": "^8.3.2",
     "vue": "^3.2.16",
     "vue-router": "^4.0.12"
   },
