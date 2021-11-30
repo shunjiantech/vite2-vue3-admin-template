@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { message } from '../modules/antdv';
+</script>
+
 <template>
-  <div>Test</div>
+  <a-button @click="message.info('message')">show message</a-button>
 </template>
