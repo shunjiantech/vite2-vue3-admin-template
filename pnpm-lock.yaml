@@ -4,6 +4,7 @@ specifiers:
   '@vitejs/plugin-vue': ^1.9.3
   ant-design-vue: ^3.0.0-alpha.13
   typescript: ^4.4.3
+  unplugin-auto-import: ^0.5.1
   unplugin-vue-components: ^0.17.2
   vite: ^2.6.4
   vue: ^3.2.16
@@ -16,6 +17,7 @@ dependencies:
 devDependencies:
   '@vitejs/plugin-vue': 1.10.1_vite@2.6.14
   typescript: 4.5.2
+  unplugin-auto-import: 0.5.1_vite@2.6.14
   unplugin-vue-components: 0.17.2_vite@2.6.14+vue@3.2.23
   vite: 2.6.14
   vue-tsc: 0.3.0_typescript@4.5.2
@@ -822,6 +824,13 @@ packages:
       mlly: 0.2.10
     dev: true
 
+  /local-pkg/0.4.0:
+    resolution: {integrity: sha512-2XBWjO/v63JeR1HPzLJxdTVRQDB84Av2p2KtBA5ahvpyLUPubcAU6iXlAJrONcY7aSqgJhXxElAnKtnYsRolPQ==}
+    engines: {node: '>=14'}
+    dependencies:
+      mlly: 0.2.10
+    dev: true
+
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
@@ -1112,6 +1121,27 @@ packages:
     resolution: {integrity: sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
+
+  /unplugin-auto-import/0.5.1_vite@2.6.14:
+    resolution: {integrity: sha512-Q3CvNbCB7nLbu+JdrF6jYs0Nx7kHmV2KzDcZHzTrdri3EhU1lUOgto+ce+Jw01Ds7RxBi9lwWwF3QoFwFPul1A==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@vueuse/core': '*'
+    peerDependenciesMeta:
+      '@vueuse/core':
+        optional: true
+    dependencies:
+      '@antfu/utils': 0.3.0
+      '@rollup/pluginutils': 4.1.1
+      local-pkg: 0.4.0
+      magic-string: 0.25.7
+      resolve: 1.20.0
+      unplugin: 0.2.21_vite@2.6.14
+    transitivePeerDependencies:
+      - rollup
+      - vite
+      - webpack
     dev: true
 
   /unplugin-vue-components/0.17.2_vite@2.6.14+vue@3.2.23:

@@ -5,3 +5,4 @@ dist-ssr
 *.local
 
 /src/components.d.ts
+/src/auto-imports.d.ts
