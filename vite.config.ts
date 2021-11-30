@@ -21,6 +21,7 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
+        '@vueuse/core',
       ],
       dts: 'src/auto-imports.d.ts',
     }),
