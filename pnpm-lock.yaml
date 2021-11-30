@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@types/node': ^16.11.11
   '@types/nprogress': ^0.2.0
+  '@types/uuid': ^8.3.3
   '@vitejs/plugin-vue': ^1.9.3
   '@vueuse/core': ^7.1.2
   '@vueuse/integrations': ^7.1.2
@@ -31,6 +32,7 @@ dependencies:
 devDependencies:
   '@types/node': 16.11.11
   '@types/nprogress': 0.2.0
+  '@types/uuid': 8.3.3
   '@vitejs/plugin-vue': 1.10.1_vite@2.6.14
   typescript: 4.5.2
   unplugin-auto-import: 0.5.1_@vueuse+core@7.1.2+vite@2.6.14
@@ -182,6 +184,10 @@ packages:
 
   /@types/throttle-debounce/2.1.0:
     resolution: {integrity: sha512-5eQEtSCoESnh2FsiLTxE121IiE60hnMqcb435fShf4bpLRjEu1Eoekht23y6zXS9Ts3l+Szu3TARnTsA0GkOkQ==}
+    dev: true
+
+  /@types/uuid/8.3.3:
+    resolution: {integrity: sha512-0LbEEx1zxrYB3pgpd1M5lEhLcXjKJnYghvhTRgaBeUivLHMDM1TzF3IJ6hXU2+8uA4Xz+5BA63mtZo5DjVT8iA==}
     dev: true
 
   /@vitejs/plugin-vue/1.10.1_vite@2.6.14:
