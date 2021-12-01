@@ -1,9 +1,9 @@
-import defaultLayout from '~/layouts/default.vue'
+import DefaultLayout from '~/layouts/Default.vue'
 
 const routes = [
   {
     path: '/',
-    component: defaultLayout,
+    component: DefaultLayout,
     children: [
       {
         path: '/',
