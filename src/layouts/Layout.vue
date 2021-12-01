@@ -47,18 +47,13 @@ provide(defaultLayoutRouterViewKey, defaultLayoutRouterView)
           mode="inline"
           @select="handleBeforeMenuSelect"
         >
-          <a-menu-item key="/" a="dsfsdf">
+          <a-sub-menu key="/tests" title="功能实验">
             <template #icon>
-              <HomeOutlined />
+              <ExperimentOutlined />
             </template>
-            <span>Home</span>
-          </a-menu-item>
-          <a-menu-item key="/other">
-            <template #icon>
-              <InfoCircleOutlined />
-            </template>
-            <span>Other</span>
-          </a-menu-item>
+            <a-menu-item key="/tests/siderControl">侧边栏收缩</a-menu-item>
+            <a-menu-item key="/tests/routerViewReload">刷新页面</a-menu-item>
+          </a-sub-menu>
         </a-menu>
       </a-layout-sider>
       <a-layout-content class="content">

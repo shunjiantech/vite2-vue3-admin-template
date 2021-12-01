@@ -1,20 +1,14 @@
 import DefaultLayout from '~/layouts/Layout.vue'
+import {
+  tests,
+} from './subs'
 
 const routes = [
   {
     path: '/',
     component: DefaultLayout,
-    children: [
-      {
-        path: '/',
-        component: () => import('~/views/Home.vue'),
-      },
-      {
-        path: '/other',
-        component: () => import('~/views/Other.vue'),
-      },
-    ],
   },
+  tests,
 ]
 
 export default routes
