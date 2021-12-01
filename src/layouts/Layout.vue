@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siderCollapsed } from './siderCollapsed'
+
 const route = useRoute()
 const router = useRouter()
 
@@ -15,6 +17,7 @@ function handleBeforeMenuSelect(e: any) {
     <a-layout>
       <a-layout-sider
         class="sider"
+        v-model:collapsed="siderCollapsed"
         collapsible
         :collapsed-width="56"
       >
