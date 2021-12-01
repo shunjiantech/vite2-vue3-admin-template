@@ -28,7 +28,7 @@ const openKeys = computed({
 function handleBeforeMenuSelect({ key, keyPath }: { key: string, keyPath: string[] }) {
   keyPath.forEach((key) => {
     openKeysSet.value.add(key)
-  });
+  })
   router.replace(key)
 }
 </script>

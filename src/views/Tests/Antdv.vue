@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { message, notification } from '~/modules/antdv';
+import { message, notification } from '~/modules/antdv'
 
 function showMessage() {
   message.info('message')
