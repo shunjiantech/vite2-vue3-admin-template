@@ -10,6 +10,7 @@ specifiers:
   '@vueuse/router': ^7.1.2
   ant-design-vue: ^3.0.0-alpha.13
   nprogress: ^0.2.0
+  sass: ^1.44.0
   typescript: ^4.4.3
   unplugin-auto-import: ^0.5.1
   unplugin-vue-components: ^0.17.2
@@ -34,10 +35,11 @@ devDependencies:
   '@types/nprogress': 0.2.0
   '@types/uuid': 8.3.3
   '@vitejs/plugin-vue': 1.10.1_vite@2.6.14
+  sass: 1.44.0
   typescript: 4.5.2
   unplugin-auto-import: 0.5.1_@vueuse+core@7.1.2+vite@2.6.14
   unplugin-vue-components: 0.17.2_vite@2.6.14+vue@3.2.23
-  vite: 2.6.14
+  vite: 2.6.14_sass@1.44.0
   vue-tsc: 0.3.0_typescript@4.5.2
 
 packages:
@@ -196,7 +198,7 @@ packages:
     peerDependencies:
       vite: ^2.5.10
     dependencies:
-      vite: 2.6.14
+      vite: 2.6.14_sass@1.44.0
     dev: true
 
   /@volar/code-gen/0.27.24:
@@ -974,6 +976,10 @@ packages:
       entities: 2.2.0
     dev: true
 
+  /immutable/4.0.0:
+    resolution: {integrity: sha512-zIE9hX70qew5qTUjSS7wi1iwj/l7+m54KWU247nhM3v806UdGj1yDndXj+IOYxxtW9zyLI+xqFNZjTuDaLUqFw==}
+    dev: true
+
   /import-meta-resolve/1.1.1:
     resolution: {integrity: sha512-JiTuIvVyPaUg11eTrNDx5bgQ/yMKMZffc7YSjvQeSMXy58DO2SQ8BtAf3xteZvmzvjYh14wnqNjL8XVeDy2o9A==}
     dependencies:
@@ -1399,6 +1405,15 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /sass/1.44.0:
+    resolution: {integrity: sha512-0hLREbHFXGQqls/K8X+koeP+ogFRPF4ZqetVB19b7Cst9Er8cOR0rc6RU7MaI4W1JmUShd1BPgPoeqmmgMMYFw==}
+    engines: {node: '>=8.9.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.2
+      immutable: 4.0.0
+    dev: true
+
   /scroll-into-view-if-needed/2.2.28:
     resolution: {integrity: sha512-8LuxJSuFVc92+0AdNv4QOxRL4Abeo1DgLnGNkn1XlaujPH/3cCFz3QI60r2VNu4obJJROzgnIUw5TKQkZvZI1w==}
     dependencies:
@@ -1554,7 +1569,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      vite: 2.6.14
+      vite: 2.6.14_sass@1.44.0
       webpack-virtual-modules: 0.4.3
     dev: true
 
@@ -1568,7 +1583,7 @@ packages:
     hasBin: true
     dev: false
 
-  /vite/2.6.14:
+  /vite/2.6.14_sass@1.44.0:
     resolution: {integrity: sha512-2HA9xGyi+EhY2MXo0+A2dRsqsAG3eFNEVIo12olkWhOmc8LfiM+eMdrXf+Ruje9gdXgvSqjLI9freec1RUM5EA==}
     engines: {node: '>=12.2.0'}
     hasBin: true
@@ -1588,6 +1603,7 @@ packages:
       postcss: 8.4.4
       resolve: 1.20.0
       rollup: 2.60.1
+      sass: 1.44.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
