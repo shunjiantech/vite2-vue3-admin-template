@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@ant-design/icons-vue': ^6.0.1
   '@types/node': ^16.11.11
   '@types/nprogress': ^0.2.0
   '@types/uuid': ^8.3.3
@@ -21,6 +22,7 @@ specifiers:
   vue-tsc: ^0.3.0
 
 dependencies:
+  '@ant-design/icons-vue': 6.0.1_vue@3.2.23
   '@vueuse/core': 7.1.2_vue@3.2.23
   '@vueuse/integrations': 7.1.2_vue@3.2.23
   '@vueuse/router': 7.1.2_vue-router@4.0.12+vue@3.2.23
