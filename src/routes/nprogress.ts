@@ -1,4 +1,4 @@
-import { useNProgress } from '@vueuse/integrations'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import 'nprogress/nprogress.css'
 import './nprogress.css'
 import router from './router'
