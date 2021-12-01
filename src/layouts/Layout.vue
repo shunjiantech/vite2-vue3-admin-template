@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { breakpointsAntDesign } from '@vueuse/core'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
+import { useRouterView } from '~/composables/useRouterView'
+import { defaultLayoutRouterViewKey } from './routerView'
 import { siderCollapsed } from './siderCollapsed'
 
 const { md } = useBreakpoints(breakpointsAntDesign)
@@ -13,6 +16,17 @@ const router = useRouter()
 function handleBeforeMenuSelect(e: any) {
   router.replace(e.key)
 }
+
+const nprogress = reactive(useNProgress())
+const defaultLayoutRouterView = reactive(useRouterView({
+  onBeforeReload: () => {
+    nprogress.start()
+  },
+  onReload: () => {
+    nprogress.done()
+  },
+}))
+provide(defaultLayoutRouterViewKey, defaultLayoutRouterView)
 </script>
 
 <template>
@@ -48,7 +62,11 @@ function handleBeforeMenuSelect(e: any) {
         </a-menu>
       </a-layout-sider>
       <a-layout-content class="content">
-        <router-view />
+        <router-view #default="{ Component }">
+          <keep-alive>
+            <component :is="Component" :key="defaultLayoutRouterView.key" />
+          </keep-alive>
+        </router-view>
       </a-layout-content>
     </a-layout>
   </a-layout>
