@@ -9,5 +9,6 @@ const baseURL = '/tests'
     </template>
     <a-menu-item :key="`${baseURL}/siderControl`">侧边栏收缩</a-menu-item>
     <a-menu-item :key="`${baseURL}/routerViewReload`">刷新页面</a-menu-item>
+    <a-menu-item :key="`${baseURL}/antdv`">antdv组件测试</a-menu-item>
   </a-sub-menu>
 </template>

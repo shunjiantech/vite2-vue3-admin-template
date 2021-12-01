@@ -12,6 +12,10 @@ const route = {
       path: 'routerViewReload',
       component: () => import('~/views/Tests/RouterViewReload.vue'),
     },
+    {
+      path: 'antdv',
+      component: () => import('~/views/Tests/Antdv.vue'),
+    },
   ],
 }
 
