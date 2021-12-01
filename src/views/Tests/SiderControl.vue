@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { siderCollapsed } from '~/layouts/siderCollapsed'
+import { siderCollapsed } from '~/layouts/default/siderCollapsed'
 </script>
 
 <template>

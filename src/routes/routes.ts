@@ -1,4 +1,4 @@
-import DefaultLayout from '~/layouts/Layout.vue'
+import DefaultLayout from '~/layouts/default/Layout.vue'
 import {
   tests,
 } from './subs'

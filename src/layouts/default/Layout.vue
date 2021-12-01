@@ -2,20 +2,16 @@
 import { breakpointsAntDesign } from '@vueuse/core'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { useRouterView } from '~/composables/useRouterView'
-import { defaultLayoutRouterViewKey } from './routerView'
-import { siderCollapsed } from './siderCollapsed'
+import { defaultLayoutRouterViewKey } from '../default/routerView'
+import { siderCollapsed } from '../default/siderCollapsed'
+import Menu from './Menu.vue'
 
 const { md } = useBreakpoints(breakpointsAntDesign)
-watch(md, () => {
-  siderCollapsed.value = !md.value
+onMounted(() => {
+  watch(md, () => {
+    siderCollapsed.value = !md.value
+  })
 })
-
-const route = useRoute()
-const router = useRouter()
-
-function handleBeforeMenuSelect(e: any) {
-  router.replace(e.key)
-}
 
 const nprogress = reactive(useNProgress())
 const defaultLayoutRouterView = reactive(useRouterView({
@@ -41,24 +37,11 @@ provide(defaultLayoutRouterViewKey, defaultLayoutRouterView)
         collapsible
         :collapsed-width="56"
       >
-        <a-menu
-          :selected-keys="[route.path]"
-          theme="dark"
-          mode="inline"
-          @select="handleBeforeMenuSelect"
-        >
-          <a-sub-menu key="/tests" title="功能实验">
-            <template #icon>
-              <ExperimentOutlined />
-            </template>
-            <a-menu-item key="/tests/siderControl">侧边栏收缩</a-menu-item>
-            <a-menu-item key="/tests/routerViewReload">刷新页面</a-menu-item>
-          </a-sub-menu>
-        </a-menu>
+        <Menu />
       </a-layout-sider>
       <a-layout-content class="content">
         <router-view #default="{ Component }">
-          <keep-alive>
+          <keep-alive :max="10">
             <component :is="Component" :key="defaultLayoutRouterView.key" />
           </keep-alive>
         </router-view>

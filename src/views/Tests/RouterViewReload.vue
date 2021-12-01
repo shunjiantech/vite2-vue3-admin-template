@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { injectRouterView, defaultLayoutRouterViewKey } from '~/layouts/routerView'
+import { injectRouterView, defaultLayoutRouterViewKey } from '~/layouts/default/routerView'
 
 const defaultLayoutRouterView = injectRouterView(defaultLayoutRouterViewKey)!
 
