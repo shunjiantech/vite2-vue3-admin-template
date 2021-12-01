@@ -5,6 +5,7 @@ import { useRouterView } from '~/composables/useRouterView'
 import { defaultLayoutRouterViewKey } from '../default/routerView'
 import { siderCollapsed } from '../default/siderCollapsed'
 import Menu from './Menu.vue'
+import Tabs from './Tabs.vue'
 
 const { md } = useBreakpoints(breakpointsAntDesign)
 onMounted(() => {
@@ -40,6 +41,7 @@ provide(defaultLayoutRouterViewKey, defaultLayoutRouterView)
         <Menu />
       </a-layout-sider>
       <a-layout-content class="content">
+        <Tabs />
         <router-view #default="{ Component }">
           <keep-alive :max="10">
             <component :is="Component" :key="defaultLayoutRouterView.key" />
