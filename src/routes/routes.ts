@@ -1,11 +1,19 @@
+import defaultLayout from '~/layouts/default.vue'
+
 const routes = [
   {
     path: '/',
-    component: () => import('~/views/Home.vue'),
-  },
-  {
-    path: '/other',
-    component: () => import('~/views/Other.vue'),
+    component: defaultLayout,
+    children: [
+      {
+        path: '/',
+        component: () => import('~/views/Home.vue'),
+      },
+      {
+        path: '/other',
+        component: () => import('~/views/Other.vue'),
+      },
+    ],
   },
 ]
 
