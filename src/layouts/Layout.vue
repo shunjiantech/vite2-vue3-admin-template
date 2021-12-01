@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { breakpointsAntDesign } from '@vueuse/core'
 import { siderCollapsed } from './siderCollapsed'
+
+const { md } = useBreakpoints(breakpointsAntDesign)
+watch(md, () => {
+  siderCollapsed.value = !md.value
+})
 
 const route = useRoute()
 const router = useRouter()
