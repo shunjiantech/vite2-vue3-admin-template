@@ -1,4 +1,9 @@
-export function useRouterView() {
+interface RouterViewOptions {
+  onBeforeReload?: () => void
+  onReload?: () => void
+} 
+
+export function useRouterView(options?: RouterViewOptions) {
   const cacheRef = ref<Map<string, Symbol>>(new Map())
 
   const route = useRoute()
@@ -6,13 +11,15 @@ export function useRouterView() {
   const key = computed(() => {
     const path = route.path
     if (!cacheRef.value.has(path)) {
-      cacheRef.value.set(path, Symbol(Date.now()))
+      cacheRef.value.set(path, Symbol())
     }
     return cacheRef.value.get(path)!
   })
 
   function reload(path: string = route.path) {
-    cacheRef.value.set(path, Symbol(Date.now()))
+    options?.onBeforeReload && options.onBeforeReload()
+    cacheRef.value.set(path, Symbol())
+    options?.onReload && options.onReload()
   }
 
   return {
