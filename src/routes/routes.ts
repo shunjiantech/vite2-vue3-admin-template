@@ -1,4 +1,4 @@
-import DefaultLayout from '~/layouts/Default.vue'
+import DefaultLayout from '~/layouts/Layout.vue'
 
 const routes = [
   {

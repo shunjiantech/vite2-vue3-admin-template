@@ -1,3 +1,12 @@
+<script setup lang="ts">
+const route = useRoute()
+const router = useRouter()
+
+function handleBeforeMenuSelect(e: any) {
+  router.replace(e.key)
+}
+</script>
+
 <template>
   <a-layout class="layout">
     <a-layout-header class="header">
@@ -9,8 +18,13 @@
         collapsible
         :collapsed-width="56"
       >
-        <a-menu theme="dark" mode="inline">
-          <a-menu-item key="/">
+        <a-menu
+          :selected-keys="[route.path]"
+          theme="dark"
+          mode="inline"
+          @select="handleBeforeMenuSelect"
+        >
+          <a-menu-item key="/" a="dsfsdf">
             <template #icon>
               <HomeOutlined />
             </template>
