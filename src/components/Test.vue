@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { message } from '../modules/antdv';
+import { message } from '~/modules/antdv';
 
 const buttonText = ref('show message')
 

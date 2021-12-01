@@ -28,8 +28,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      'src': path.resolve(__dirname, 'src'),
-      'views': path.resolve(__dirname, 'src/views'),
+      '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
 })
