@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { tabs } from './tabs'
+import { injectRouterView, defaultLayoutRouterViewKey } from './routerView'
+
+const defaultLayoutRouterView = injectRouterView(defaultLayoutRouterViewKey)!
 
 const tabsRef = ref<HTMLElement>()
 
@@ -81,6 +84,14 @@ function getTitle(path: string) {
   const meta = matched[matched.length - 1].meta
   return <string | undefined>(meta.tabTitle || meta.menuAndTabTitle)
 }
+
+function handleReload({ key }: { key: 'reload' }) {
+  switch(key) {
+    case 'reload':
+      defaultLayoutRouterView.reload()
+      break
+  }
+}
 </script>
 
 <template>
@@ -129,8 +140,8 @@ function getTitle(path: string) {
               <EllipsisOutlined />
             </a-button>
             <template #overlay>
-              <a-menu>
-                <a-menu-item>刷新页面</a-menu-item>
+              <a-menu @click="handleReload">
+                <a-menu-item key="reload">刷新页面</a-menu-item>
                 <a-menu-divider />
                 <a-menu-item>关闭标签页</a-menu-item>
                 <a-menu-item>关闭其他标签页</a-menu-item>
