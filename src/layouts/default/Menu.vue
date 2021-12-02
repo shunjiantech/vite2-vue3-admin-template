@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MenuTests from './MenuTests.vue'
+import { siderCollapsed } from './siderCollapsed'
 
 const route = useRoute()
 const router = useRouter()
@@ -7,11 +8,14 @@ const router = useRouter()
 const openKeysSet = ref<Set<string>>(new Set())
 
 watchEffect(() => {
-  let path = ''
-  route.path.split('/').forEach((key) => {
-    path = `${path}/${key}`.replace(/\/+/g, '/')
-    openKeysSet.value.add(path)
-  })
+  // 侧边栏不收缩的状态下，路由变更自动展开父级
+  if (!siderCollapsed.value) {
+    let path = ''
+    route.path.split('/').forEach((key) => {
+      path = `${path}/${key}`.replace(/\/+/g, '/')
+      openKeysSet.value.add(path)
+    })
+  }
 })
 
 const openKeys = computed({
