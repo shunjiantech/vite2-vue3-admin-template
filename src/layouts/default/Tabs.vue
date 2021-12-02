@@ -85,10 +85,57 @@ function getTitle(path: string) {
   return <string | undefined>(meta.tabTitle || meta.menuAndTabTitle)
 }
 
-function handleReload({ key }: { key: 'reload' }) {
+function handleReload({ key }: { key: 'reload' | 'close' | 'closeOther' }) {
   switch(key) {
     case 'reload':
       defaultLayoutRouterView.reload()
+      break
+    case 'close':
+      handleClose()
+      break
+    case 'closeOther':
+      handleCloseOther()
+      break
+  }
+}
+
+function handleCloseOther() {
+  const keys = tabs.value.keys()
+  let current = keys.next().value
+  while(current) {
+    if (current !== route.fullPath) {
+      handleClose(current)
+    }
+    current = keys.next().value
+  }
+}
+
+async function handleClose(fullPath: string = route.fullPath) {
+  if (fullPath === route.fullPath) {
+    const keys = tabs.value.keys()
+    let prev = undefined
+    let current = keys.next().value
+    let next = undefined
+    while(current) {
+      next = keys.next().value
+      if (current === fullPath) {
+        tabs.value.delete(fullPath)
+        router.push(next || prev || '/')
+        break
+      }
+      prev = current
+      current = next
+    }
+  } else {
+    tabs.value.delete(fullPath)
+  }
+  defaultLayoutRouterView.reload(fullPath)
+}
+
+function handleEdit(key: any, action: 'add' | 'remove') {
+  switch(action) {
+    case 'remove':
+      handleClose(JSON.parse(key).fullPath)
       break
   }
 }
@@ -106,6 +153,7 @@ function handleReload({ key }: { key: 'reload' }) {
       type="editable-card"
       hideAdd
       @change="handleChange"
+      @edit="handleEdit"
     >
       <a-tab-pane
         v-for="[fullPath, path] in tabs"
@@ -143,8 +191,8 @@ function handleReload({ key }: { key: 'reload' }) {
               <a-menu @click="handleReload">
                 <a-menu-item key="reload">刷新页面</a-menu-item>
                 <a-menu-divider />
-                <a-menu-item>关闭标签页</a-menu-item>
-                <a-menu-item>关闭其他标签页</a-menu-item>
+                <a-menu-item key="close">关闭标签页</a-menu-item>
+                <a-menu-item key="closeOther">关闭其他标签页</a-menu-item>
               </a-menu>
             </template>
           </a-dropdown>
