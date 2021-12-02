@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { tabs } from './tabs'
+
 const tabsRef = ref<HTMLElement>()
 
 const tabsWrap = ref<HTMLElement>()
@@ -59,20 +61,37 @@ function scrollTo(toLeft: boolean) {
     requestAnimationFrame(render)
   }
 }
+
+const route = useRoute()
+const router = useRouter()
+
+watchEffect(() => {
+  tabs.value.set(route.fullPath, route.path)
+})
+
+function handleChange(key: string) {
+  const { fullPath } = JSON.parse(key)
+  router.push(fullPath)
+}
 </script>
 
 <template>
   <div ref="tabsRef" class="tabs">
     <a-tabs
+      :active-key="JSON.stringify({
+        fullPath: route.fullPath,
+        path: route.path,
+      })"
       size="small"
       :tab-bar-gutter="4"
       type="editable-card"
       hideAdd
+      @change="handleChange"
     >
       <a-tab-pane
-        v-for="i in 40"
-        :key="i"
-        :tab="`Tab ${i}`"
+        v-for="[fullPath, path] in tabs"
+        :key="JSON.stringify({ fullPath, path })"
+        :tab="fullPath"
       />
       <template #leftExtra>
         <a-button
@@ -119,9 +138,10 @@ function scrollTo(toLeft: boolean) {
 <style scoped lang="scss">
 .tabs {
   padding-top: 8px;
-  background-image: linear-gradient(to bottom, #fff 42px, #f0f2f5 54px);
+  background-image: linear-gradient(to bottom, #fff 44px, transparent 100%);
   ::v-deep(.ant-tabs) {
     .ant-tabs-nav {
+      height: 36px;
       margin-bottom: 8px;
     }
     .ant-tabs-nav-operations {
