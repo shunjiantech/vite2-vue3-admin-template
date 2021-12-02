@@ -42,11 +42,13 @@ provide(defaultLayoutRouterViewKey, defaultLayoutRouterView)
       </a-layout-sider>
       <a-layout-content class="content">
         <Tabs />
-        <router-view #default="{ Component }">
-          <keep-alive :max="10">
-            <component :is="Component" :key="defaultLayoutRouterView.key" />
-          </keep-alive>
-        </router-view>
+        <div class="view">
+          <router-view #default="{ Component }">
+            <keep-alive :max="10">
+              <component :is="Component" :key="defaultLayoutRouterView.key" />
+            </keep-alive>
+          </router-view>
+        </div>
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -70,7 +72,12 @@ provide(defaultLayoutRouterViewKey, defaultLayoutRouterView)
     }
   }
   .content {
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    .view {
+      flex: auto;
+      overflow: auto;
+    }
   }
 }
 </style>
