@@ -66,12 +66,20 @@ const route = useRoute()
 const router = useRouter()
 
 watchEffect(() => {
-  tabs.value.set(route.fullPath, route.path)
+  if (getTitle(route.fullPath)) {
+    tabs.value.set(route.fullPath, route.path)
+  }
 })
 
 function handleChange(key: string) {
   const { fullPath } = JSON.parse(key)
-  router.push(fullPath)
+    router.push(fullPath)
+}
+
+function getTitle(path: string) {
+  const matched = router.resolve(path).matched
+  const meta = matched[matched.length - 1].meta
+  return <string | undefined>(meta.tabTitle || meta.menuAndTabTitle)
 }
 </script>
 
@@ -91,7 +99,7 @@ function handleChange(key: string) {
       <a-tab-pane
         v-for="[fullPath, path] in tabs"
         :key="JSON.stringify({ fullPath, path })"
-        :tab="fullPath"
+        :tab="getTitle(fullPath)"
       />
       <template #leftExtra>
         <a-button
