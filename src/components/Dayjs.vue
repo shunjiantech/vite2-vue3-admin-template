@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import dayjs, { Dayjs } from 'dayjs'
+import dayjs, { Dayjs, OpUnitType } from 'dayjs'
 
 type ValueType = number | string | null
 
 const props = defineProps<{
   value?: ValueType
   format?: string
+  unitType?: 'startOf' | 'endOf'
+  unit?: OpUnitType
 }>()
 
 const emit = defineEmits<{
@@ -24,14 +26,18 @@ const valueComputed = computed(() => {
 })
 
 function handleUpdate(newDayjsObj?: Dayjs | null) {
-  if (newDayjsObj === null || newDayjsObj === undefined) {
-    value.value = newDayjsObj
+  let obj = newDayjsObj
+  if (obj === null || obj === undefined) {
+    value.value = obj
     return
   }
+  if (props.unitType && props.unit) {
+    obj = obj[props.unitType](props.unit)
+  }
   if (props.format) {
-    value.value = newDayjsObj.format(props.format)
+    value.value = obj.format(props.format)
   } else {
-    value.value = newDayjsObj.valueOf()
+    value.value = obj.valueOf()
   }
 }
 </script>
