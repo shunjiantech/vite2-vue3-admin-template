@@ -101,7 +101,10 @@ watchEffect(async () => {
 .ant-modal {
   &.draggable {
     position: absolute;
-    padding-bottom: 0px;
+    // 清除默认样式
+    padding: 0;
+    // 页面宽度小于768时会多一个margin: 8px auto
+    margin: 0;
     .ant-modal-header {
       user-select: none;
       cursor: move;
