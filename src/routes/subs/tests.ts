@@ -37,6 +37,13 @@ const route = {
         menuAndTabTitle: '弹窗',
       },
     },
+    {
+      path: 'dayjsFormat',
+      component: () => import('~/views/Tests/DayjsFormat.vue'),
+      meta: {
+        menuAndTabTitle: 'Dayjs组件测试',
+      },
+    },
   ],
 }
 

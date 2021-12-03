@@ -30,5 +30,8 @@ function getTitle(path: string): string {
     <a-menu-item
       :key="`${baseURL}/modal`"
     >{{ getTitle(`${baseURL}/modal`) }}</a-menu-item>
+    <a-menu-item
+      :key="`${baseURL}/dayjsFormat`"
+    >{{ getTitle(`${baseURL}/dayjsFormat`) }}</a-menu-item>
   </a-sub-menu>
 </template>
