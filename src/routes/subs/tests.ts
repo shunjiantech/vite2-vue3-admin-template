@@ -30,6 +30,13 @@ const route = {
         menuAndTabTitle: 'antdv组件测试',
       },
     },
+    {
+      path: 'modal',
+      component: () => import('~/views/Tests/ModalTest.vue'),
+      meta: {
+        menuAndTabTitle: '弹窗',
+      },
+    },
   ],
 }
 

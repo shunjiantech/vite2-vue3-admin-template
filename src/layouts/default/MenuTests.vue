@@ -27,5 +27,8 @@ function getTitle(path: string): string {
     <a-menu-item
       :key="`${baseURL}/antdv`"
     >{{ getTitle(`${baseURL}/antdv`) }}</a-menu-item>
+    <a-menu-item
+      :key="`${baseURL}/modal`"
+    >{{ getTitle(`${baseURL}/modal`) }}</a-menu-item>
   </a-sub-menu>
 </template>
